@@ -59,6 +59,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
+        /*
         if (!packageName.startsWith("com.simplemobiletools.", true)) {
             if ((0..50).random() == 10 || baseConfig.appRunCount % 100 == 0) {
                 val label = "You are using a fake version of the app. For your own safety download the original one from www.simplemobiletools.com. Thanks"
@@ -67,6 +68,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
                 }
             }
         }
+        */
     }
 
     override fun onResume() {
@@ -272,6 +274,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
     }
 
     fun startCustomizationActivity() {
+	/*
         if (!packageName.contains("slootelibomelpmis".reversed(), true)) {
             if (baseConfig.appRunCount > 100) {
                 val label = "You are using a fake version of the app. For your own safety download the original one from www.simplemobiletools.com. Thanks"
@@ -281,7 +284,8 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
                 return
             }
         }
-
+        */
+        
         Intent(applicationContext, CustomizationActivity::class.java).apply {
             putExtra(APP_ICON_IDS, getAppIconIDs())
             putExtra(APP_LAUNCHER_NAME, getAppLauncherName())
@@ -291,7 +295,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
 
     // synchronous return value determines only if we are showing the SAF dialog, callback result tells if the SD or OTG permission has been granted
     fun handleSAFDialog(path: String, callback: (success: Boolean) -> Unit): Boolean {
-        return if (!packageName.startsWith("com.simplemobiletools")) {
+        return if (!packageName.startsWith("com.mayulu")) {
             callback(true)
             false
         } else if (isShowingSAFDialog(path) || isShowingOTGDialog(path)) {
@@ -538,7 +542,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
     private fun getExportSettingsFilename(): String {
         var defaultFilename = baseConfig.lastExportedSettingsFile
         if (defaultFilename.isEmpty()) {
-            val appName = baseConfig.appId.removeSuffix(".debug").removeSuffix(".pro").removePrefix("com.simplemobiletools.")
+            val appName = baseConfig.appId.removeSuffix(".debug").removePrefix("com.mayulu.")
             defaultFilename = "$appName-settings.txt"
         }
 
