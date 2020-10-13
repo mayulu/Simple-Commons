@@ -25,7 +25,8 @@ class MyContactsContentProvider {
         fun getSimpleContacts(context: Context, cursor: Cursor?): ArrayList<SimpleContact> {
             val contacts = ArrayList<SimpleContact>()
             val packageName = context.packageName.removeSuffix(".debug")
-            if (packageName != "com.simplemobiletools.dialer" && packageName != "com.simplemobiletools.smsmessenger") {
+            //if (packageName != "com.simplemobiletools.dialer" && packageName != "com.simplemobiletools.smsmessenger") {
+            if (packageName != "com.mayulu.colorphone") {
                 return contacts
             }
 
